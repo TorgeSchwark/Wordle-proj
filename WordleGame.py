@@ -55,6 +55,18 @@ class RoundOfPlay:
     def __str__(self):
         ret = "Versuche übrig: {}\n Lösung: {}".format(self.tries_left, self.solution)
         return ret
+    
+
+    def change_solution(self, new_solution) :
+        self.solution = new_solution
+        self.wb_ind = {}
+        for ind in range(0, len(self.solution)) :
+            elem=self.solution[ind]
+            if elem not in self.wb_ind.keys() :
+                self.wb_ind[elem] = [ind]
+            else :
+                self.wb_ind[elem] = self.wb_ind[elem] + [ind]
+
 
     
     def eval_try(self, Versuch):
